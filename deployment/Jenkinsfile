@@ -11,8 +11,8 @@ pipeline {
 
     stages {
         stage ('Build') {
-            git url: ${GIT_URL}
             steps {
+                git url: "${GIT_URL}"
                 script {
                      if(isUnix()) {
                         sh "mvn -Dmaven.test.failure.ignore=true clean package"
