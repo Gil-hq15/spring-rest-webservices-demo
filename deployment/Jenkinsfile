@@ -35,7 +35,19 @@ pipeline {
                     }
                 }
             }
+        }
 
+        stage ('Docker build') {
+            steps {
+                script {
+                    if(isUnix()) {
+                       sh "docker build -t hernangi/spring-rest-ws-demo ."
+                    }
+                    else {
+                       bat "docker build -t hernangi/spring-rest-ws-demo ."
+                    }
+                }
+            }
         }
     }
 }
